@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Star, Video, Globe, Users, Wifi, Sparkles, Heart, CheckCircle2 } from 'lucide-react';
+import { Star, Video, Globe, Users, Wifi, Sparkles, Heart, CheckCircle2 } from 'lucide-react';
 import { ButterflyCard } from './components/ButterflyCard';
 import { RevealedMessage } from './components/RevealedMessage';
-import { CONTENT, WHATSAPP_LINK } from './constants';
+import { Button } from './components/Button';
+import { CONTENT, WHATSAPP_LINK } from './constants.tsx';
 
 const App: React.FC = () => {
-  const CtaButton = ({ fullWidth = false, className = '' }) => (
-    <a 
-      href={WHATSAPP_LINK}
-      target="_blank" 
-      rel="noopener noreferrer" 
-      className={`inline-flex items-center justify-center px-8 py-4 text-lg font-bold transition-all duration-300 rounded-full transform hover:scale-105 shadow-lg group bg-gradient-to-r from-accent-400 to-accent-600 text-white hover:shadow-accent-500/30 hover:from-accent-300 hover:to-accent-500 ${fullWidth ? 'w-full' : ''} ${className}`}
-    >
-      <span className="ml-2">{CONTENT.hero.cta}</span>
-      <MessageCircle className="w-6 h-6 animate-pulse" />
-    </a>
-  );
-
   return (
     <div className="min-h-screen bg-mystic-950 text-white font-sans selection:bg-accent-500 selection:text-white">
       
@@ -41,8 +30,12 @@ const App: React.FC = () => {
             className="mb-8"
           />
 
-          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <CtaButton className="shadow-accent-500/20" />
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto relative z-20">
+            <Button 
+              text={CONTENT.hero.cta} 
+              href={WHATSAPP_LINK}
+              className="shadow-2xl shadow-accent-500/20"
+            />
           </div>
 
           <div className="mt-12 flex items-center gap-8 text-mystic-300 opacity-80">
@@ -193,6 +186,24 @@ const App: React.FC = () => {
              </div>
            </div>
         </section>
+
+        {/* --- BOTTOM CTA --- */}
+        <div className="py-24 bg-mystic-950 border-t border-mystic-800 flex flex-col items-center justify-center gap-6 relative overflow-hidden">
+           {/* Background Glow */}
+           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-64 bg-accent-500/10 blur-[100px] pointer-events-none"></div>
+           
+           <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-2 relative z-10 text-center px-4">
+             מוכנה להתחיל את המסע?
+           </h2>
+           
+           <Button 
+             text={CONTENT.hero.cta}
+             href={WHATSAPP_LINK}
+             className="scale-110 shadow-2xl shadow-accent-500/40 hover:scale-115"
+           />
+
+           <p className="mt-8 text-sm text-mystic-400 opacity-50">© כל הזכויות שמורות - מסע התקשור</p>
+        </div>
 
       </main>
     </div>
