@@ -1,24 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUp, MessageCircle, Star, Video, Globe, Users, Wifi, Sparkles, Heart, CheckCircle2 } from 'lucide-react';
+import { MessageCircle, Star, Video, Globe, Users, Wifi, Sparkles, Heart, CheckCircle2 } from 'lucide-react';
 import { ButterflyCard } from './components/ButterflyCard';
 import { RevealedMessage } from './components/RevealedMessage';
 import { CONTENT, WHATSAPP_LINK } from './constants';
 
 const App: React.FC = () => {
-  const [showScrollTop, setShowScrollTop] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const CtaButton = ({ fullWidth = false, className = '' }) => (
     <a 
       href={WHATSAPP_LINK}
@@ -209,46 +195,6 @@ const App: React.FC = () => {
         </section>
 
       </main>
-
-      <footer className="bg-black py-12 text-center text-mystic-400 text-sm border-t border-mystic-800">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center gap-6 mb-8">
-            {CONTENT.footer.social?.map((s, i) => (
-              <a key={i} href={s.link} aria-label={s.label} className="hover:text-accent-400 transition-colors transform hover:scale-110 p-2 rounded-full hover:bg-mystic-900/50">
-                {s.icon}
-              </a>
-            ))}
-          </div>
-          
-          <div className="flex justify-center flex-wrap gap-8 mb-8 text-mystic-300">
-             {CONTENT.footer.legal?.map((l, i) => (
-               <a key={i} href={l.link} className="hover:text-white transition-colors hover:underline decoration-mystic-700 underline-offset-4">{l.text}</a>
-             ))}
-          </div>
-
-          <p>{CONTENT.footer.rights}</p>
-          <div className="mt-4 text-xs opacity-60 flex items-center justify-center gap-2 group cursor-default hover:opacity-100 transition-opacity">
-            <span>{CONTENT.footer.madeWith}</span>
-            <Heart className="w-3 h-3 text-red-500 fill-red-500/20 animate-pulse group-hover:fill-red-500 transition-all duration-300" />
-          </div>
-        </div>
-      </footer>
-
-      {/* Sticky Mobile/Desktop CTA */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-mystic-900/90 backdrop-blur-md border-t border-mystic-700 z-50 flex justify-center items-center shadow-[0_-5px_20px_rgba(0,0,0,0.5)] md:hidden">
-         <CtaButton fullWidth className="text-sm py-3" />
-      </div>
-
-       <div className={`fixed bottom-8 left-8 z-40 hidden md:block transition-all duration-500 ${showScrollTop ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
-         <CtaButton className="shadow-2xl shadow-accent-500/20" />
-      </div>
-
-      <button 
-        onClick={scrollToTop}
-        className={`fixed bottom-24 right-4 md:bottom-8 md:right-8 bg-mystic-700 p-3 rounded-full shadow-lg hover:bg-mystic-600 transition-all z-40 ${showScrollTop ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'}`}
-      >
-        <ArrowUp className="w-6 h-6 text-white" />
-      </button>
     </div>
   );
 };
