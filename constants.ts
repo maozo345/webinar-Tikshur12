@@ -1,7 +1,8 @@
 import { AppContent } from './types';
 import { 
   Waves, Users, Lightbulb, Zap, 
-  Sun, BookOpen, Film, Video, Feather, Gem, Infinity
+  Sun, BookOpen, Film, Video, Feather, Gem, Infinity,
+  Facebook, Instagram, MessageCircle
 } from 'lucide-react';
 import React from 'react';
 
@@ -10,7 +11,8 @@ export const WHATSAPP_LINK = "https://chat.whatsapp.com/HqjcH2GgzL9Hqy666R0HDc";
 // Icon mapping helper
 export const ICON_MAP: Record<string, any> = {
   Waves, Users, Lightbulb, Zap, 
-  Sun, BookOpen, Film, Video, Feather, Gem, Infinity
+  Sun, BookOpen, Film, Video, Feather, Gem, Infinity,
+  Facebook, Instagram, MessageCircle
 };
 
 export const CONTENT: AppContent = {
@@ -107,6 +109,15 @@ export const CONTENT: AppContent = {
   },
   footer: {
     rights: "© כל הזכויות שמורות - מסע התקשור",
-    madeWith: "נבנה באהבה"
+    madeWith: "נבנה באהבה",
+    social: [
+      { icon: React.createElement(Facebook), link: "#", label: "Facebook" },
+      { icon: React.createElement(Instagram), link: "#", label: "Instagram" },
+      { icon: React.createElement(MessageCircle), link: WHATSAPP_LINK, label: "WhatsApp" }
+    ],
+    legal: [
+      { text: "מדיניות פרטיות", link: "#" },
+      { text: "תנאי שימוש", link: "#" }
+    ]
   }
 };

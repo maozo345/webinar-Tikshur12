@@ -210,10 +210,27 @@ const App: React.FC = () => {
 
       </main>
 
-      <footer className="bg-black py-8 text-center text-mystic-400 text-sm border-t border-mystic-800">
+      <footer className="bg-black py-12 text-center text-mystic-400 text-sm border-t border-mystic-800">
         <div className="container mx-auto px-4">
+          <div className="flex justify-center gap-6 mb-8">
+            {CONTENT.footer.social?.map((s, i) => (
+              <a key={i} href={s.link} aria-label={s.label} className="hover:text-accent-400 transition-colors transform hover:scale-110 p-2 rounded-full hover:bg-mystic-900/50">
+                {s.icon}
+              </a>
+            ))}
+          </div>
+          
+          <div className="flex justify-center flex-wrap gap-8 mb-8 text-mystic-300">
+             {CONTENT.footer.legal?.map((l, i) => (
+               <a key={i} href={l.link} className="hover:text-white transition-colors hover:underline decoration-mystic-700 underline-offset-4">{l.text}</a>
+             ))}
+          </div>
+
           <p>{CONTENT.footer.rights}</p>
-          <p className="mt-2 text-xs opacity-50">{CONTENT.footer.madeWith}</p>
+          <div className="mt-4 text-xs opacity-60 flex items-center justify-center gap-2 group cursor-default hover:opacity-100 transition-opacity">
+            <span>{CONTENT.footer.madeWith}</span>
+            <Heart className="w-3 h-3 text-red-500 fill-red-500/20 animate-pulse group-hover:fill-red-500 transition-all duration-300" />
+          </div>
         </div>
       </footer>
 

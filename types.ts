@@ -46,5 +46,7 @@ export interface AppContent {
   footer: {
     rights: string;
     madeWith: string;
+    social: { icon: React.ReactNode; link: string; label: string }[];
+    legal: { text: string; link: string }[];
   };
 }
